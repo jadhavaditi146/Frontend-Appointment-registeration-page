@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign In & User Records</title>
+    <link rel="stylesheet" href="signin.css">
+</head>
+<body>
+    <div class="signin-container" id="signinContainer">
+        <h1>Create Your Account</h1>
+        <form id="signinForm">
+            <table>
+                <tr>
+                    <td><label for="fullName">Full Name:</label></td>
+                    <td><input type="text" id="fullName" name="fullName" required></td>
+                </tr>
+                <tr>
+                    <td><label for="email">Email:</label></td>
+                    <td><input type="email" id="email" name="email" required></td>
+                </tr>
+                <tr>
+                    <td><label for="password">Password:</label></td>
+                    <td>
+                        <input type="password" id="password" name="password" 
+                               pattern="(?=.*[A-Z])(?=.*[!@#$%^&*])(?=.*[0-9]).{8,}" 
+                               title="Password must be at least 8 characters long, contain one uppercase letter, one special character, and at least one number." 
+                               required>
+                    </td>
+                </tr>
+                <tr>
+                    <td><label for="confirmPassword">Confirm Password:</label></td>
+                    <td><input type="password" id="confirmPassword" name="confirmPassword" required></td>
+                </tr>
+                <tr>
+                    <td colspan="2" style="text-align: center;">
+                        <button type="submit">Sign Up</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2" style="text-align: center;">
+                        <p>Already have an account? <a href="login.html">Login here</a></p>
+                    </td>
+                </tr>
+            </table>
+        </form>
+        <div id="signinMessage" style="display: none;">
+            <p id="message"></p>
+        </div>
+    </div>
+
+    <!-- User Records Section -->
+    <div class="records-container" id="recordsContainer" style="display: none;">
+        <h1>User Records</h1>
+        <table border="1" style="width: 100%; text-align: left; border-collapse: collapse;">
+            <thead>
+                <tr style="background-color: #f2f2f2;">
+                    <th style="padding: 10px;">Full Name</th>
+                    <th style="padding: 10px;">Email</th>
+                </tr>
+            </thead>
+            <tbody id="recordsTable">
+                <!-- Records will be populated here -->
+            </tbody>
+        </table>
+    </div>
+
+    <script>
+        document.getElementById('signinForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            const fullName = document.getElementById('fullName').value;
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            const confirmPassword = document.getElementById('confirmPassword').value;
+
+            // Validate passwords match
+            if (password !== confirmPassword) {
+                alert('Passwords do not match');
+                return;
+            }
+
+            // Store user data in local storage
+            let users = JSON.parse(localStorage.getItem('users')) || [];
+            users.push({ fullName, email });
+            localStorage.setItem('users', JSON.stringify(users));
+
+            // Display the records page
+            displayRecords();
+        });
+
+        // Function to display the records
+        function displayRecords() {
+            const signinContainer = document.getElementById('signinContainer');
+            const recordsContainer = document.getElementById('recordsContainer');
+
+            // Hide the sign-in form and show the records table
+            signinContainer.style.display = 'none';
+            recordsContainer.style.display = 'block';
+
+            // Retrieve user data from local storage
+            const users = JSON.parse(localStorage.getItem('users')) || [];
+            const recordsTable = document.getElementById('recordsTable');
+            recordsTable.innerHTML = ''; // Clear previous content
+
+            // Populate the table with user data
+            users.forEach(user => {
+                const row = document.createElement('tr');
+                row.innerHTML = `<td style="padding: 10px;">${user.fullName}</td><td style="padding: 10px;">${user.email}</td>`;
+                recordsTable.appendChild(row);
+            });
+        }
+
+        // Check if there are users stored and display the records automatically
+        if (JSON.parse(localStorage.getItem('users'))?.length) {
+            displayRecords();
+        }
+    </script>
+</body>
+</html>
