@@ -1,12 +1,26 @@
-# Frontend-Appointment-registeration-page
-The frontend of this project is created using HTML and CSS
-## Database Setup
+This is a Doctor Appointment Booking System built with Flask, HTML, Tailwind CSS, and MySQL.
+Patients can book appointments, view their booking history, and choose from a list of available doctors.
 
-This project uses **MySQL** for storing patients, doctors, and appointments.
+ Features
 
-1. Open MySQL and run the following command to create the database:
+ View list of doctors and their specializations
 
-   ```bash
-   mysql -u root -p < database/appointment_db.sql
+ Book an appointment with preferred date and time
+
+ Appointment confirmation and storage in MySQL database
+
+ View appointment history using email or phone number
+
+ Clean and responsive UI using Tailwind CSS
+
+ Tech Stack
+
+Frontend: HTML, Tailwind CSS
+
+Backend: Flask (Python)
+
+Database: MySQL
+
+Version Control: Git & GitHub
 
 
