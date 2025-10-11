@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - HealthCare</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .fade-in {
+            animation: fadeIn 0.5s ease-out;
+        }
+    </style>
+</head>
+<body class="bg-gradient-to-br from-blue-50 via-white to-cyan-50">
+    <!-- Header -->
+    <nav class="fixed w-full bg-white/90 backdrop-blur-md z-50 border-b border-gray-100">
+        <div class="max-w-6xl mx-auto px-6 py-4">
+            <div class="flex justify-between items-center">
+                <div class="text-xl font-semibold text-teal-600">HealthCare+</div>
+                
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex items-center gap-8">
+                    <a href="/" class="text-gray-700 hover:text-teal-600 transition font-medium text-sm">Home</a>
+                    <a href="/doctors" class="text-gray-700 hover:text-teal-600 transition font-medium text-sm">Doctors</a>
+                    <a href="/book" class="text-gray-700 hover:text-teal-600 transition font-medium text-sm">Book Appointment</a>
+                    <a href="/my-appointments" class="text-gray-700 hover:text-teal-600 transition font-medium text-sm">My Appointments</a>
+                    <a href="/about" class="text-teal-600 transition font-medium text-sm">About</a>
+                    <a href="/contact" class="text-gray-700 hover:text-teal-600 transition font-medium text-sm">Contact</a>
+                </div>
+
+                <a href="/book" class="hidden md:block bg-teal-600 text-white px-6 py-2.5 rounded-lg text-sm font-medium hover:bg-teal-700 transition">
+    Book Now
+</a>
+
+                <!-- Mobile Menu Button -->
+                <button id="mobileMenuBtn" class="md:hidden text-gray-700">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+            </div>
+
+            <!-- Mobile Menu -->
+            <div id="mobileMenu" class="hidden md:hidden pt-4 pb-2">
+                <div class="flex flex-col gap-3">
+                    <a href="/" class="text-gray-700 hover:text-teal-600 transition font-medium text-sm py-2">Home</a>
+                    <a href="/doctors" class="text-gray-700 hover:text-teal-600 transition font-medium text-sm py-2">Doctors</a>
+                    <a href="/book" class="text-gray-700 hover:text-teal-600 transition font-medium text-sm py-2">Book Appointment</a>
+                    <a href="/my-appointments" class="text-gray-700 hover:text-teal-600 transition font-medium text-sm py-2">My Appointments</a>
+                    <a href="/about" class="text-teal-600 transition font-medium text-sm py-2">About</a>
+                    <a href="/contact" class="text-gray-700 hover:text-teal-600 transition font-medium text-sm py-2">Contact</a
+                    <a href="/book" class="hidden md:block bg-teal-600 text-white px-6 py-2.5 rounded-lg text-sm font-medium hover:bg-teal-700 transition">
+    Book Now
+</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="bg-gradient-to-r from-blue-600 to-cyan-600 text-white py-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h1 class="text-4xl md:text-5xl font-bold mb-4">Get In Touch</h1>
+            <p class="text-xl text-blue-100 max-w-2xl mx-auto">
+                We're here to help. Reach out to us with any questions or concerns.
+            </p>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        <div class="grid md:grid-cols-2 gap-12">
+            <!-- Contact Form -->
+            <div class="bg-white rounded-2xl shadow-lg p-8">
+                <h2 class="text-3xl font-bold text-gray-900 mb-6">Send Us a Message</h2>
+                
+                <form action="/contact" method="POST" class="space-y-6">
+                    <div>
+                        <label for="name" class="block text-sm font-medium text-gray-700 mb-2">
+                            Full Name *
+                        </label>
+                        <input
+                            type="text"
+                            id="name"
+                            name="name"
+                            required
+                            class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition"
+                            placeholder="John Doe"
+                        >
+                    </div>
+
+                    <div>
+                        <label for="email" class="block text-sm font-medium text-gray-700 mb-2">
+                            Email Address *
+                        </label>
+                        <input
+                            type="email"
+                            id="email"
+                            name="email"
+                            required
+                            class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition"
+                            placeholder="john@example.com"
+                        >
+                    </div>
+
+                    <div>
+                        <label for="phone" class="block text-sm font-medium text-gray-700 mb-2">
+                            Phone Number
+                        </label>
+                        <input
+                            type="tel"
+                            id="phone"
+                            name="phone"
+                            class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition"
+                            placeholder="+1 (555) 123-4567"
+                        >
+                    </div>
+
+                    <div>
+                        <label for="subject" class="block text-sm font-medium text-gray-700 mb-2">
+                            Subject
+                        </label>
+                        <input
+                            type="text"
+                            id="subject"
+                            name="subject"
+                            class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition"
+                            placeholder="Appointment Inquiry"
+                        >
+                    </div>
+
+                    <div>
+                        <label for="message" class="block text-sm font-medium text-gray-700 mb-2">
+                            Message *
+                        </label>
+                        <textarea
+                            id="message"
+                            name="message"
+                            required
+                            rows="5"
+                            class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition resize-none"
+                            placeholder="How can we help you?"
+                        ></textarea>
+                    </div>
+
+                    <button
+                        type="submit"
+                        class="w-full bg-gradient-to-r from-blue-600 to-cyan-600 text-white py-4 rounded-lg font-semibold hover:from-blue-700 hover:to-cyan-700 transition transform hover:scale-105"
+                    >
+                        Send Message
+                    </button>
+                </form>
+            </div>
+
+            <!-- Contact Information -->
+            <div class="space-y-8">
+                <div>
+                    <h2 class="text-3xl font-bold text-gray-900 mb-6">Contact Information</h2>
+                    <p class="text-gray-600 mb-8">
+                        Have questions? We're here to help. Reach out through any of these channels.
+                    </p>
+                </div>
+
+                <div class="space-y-6">
+                    <!-- Address -->
+                    <div class="bg-white rounded-xl shadow-md p-6 flex items-start space-x-4 hover:shadow-lg transition">
+                        <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                            <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                            </svg>
+                        </div>
+                        <div>
+                            <h3 class="font-semibold text-gray-900 mb-2">Visit Us</h3>
+                            <p class="text-gray-600">
+                                123 Medical Plaza, Suite 100<br>
+                                Healthcare District<br>
+                                City, State 12345
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Phone -->
+                    <div class="bg-white rounded-xl shadow-md p-6 flex items-start space-x-4 hover:shadow-lg transition">
+                        <div class="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                            <svg class="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path>
+                            </svg>
+                        </div>
+                        <div>
+                            <h3 class="font-semibold text-gray-900 mb-2">Call Us</h3>
+                            <p class="text-gray-600">
+                                Main: <a href="tel:+15551234567" class="text-blue-600 hover:underline">+1 (555) 123-4567</a><br>
+                                Emergency: <a href="tel:+15559110000" class="text-blue-600 hover:underline">+1 (555) 911-0000</a>
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Email -->
+                    <div class="bg-white rounded-xl shadow-md p-6 flex items-start space-x-4 hover:shadow-lg transition">
+                        <div class="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                            <svg class="w-6 h-6 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                            </svg>
+                        </div>
+                        <div>
+                            <h3 class="font-semibold text-gray-900 mb-2">Email Us</h3>
+                            <p class="text-gray-600">
+                                General: <a href="mailto:info@healthcare.com" class="text-blue-600 hover:underline">info@healthcare.com</a><br>
+                                Support: <a href="mailto:support@healthcare.com" class="text-blue-600 hover:underline">support@healthcare.com</a>
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Hours -->
+                    <div class="bg-white rounded-xl shadow-md p-6 flex items-start space-x-4 hover:shadow-lg transition">
+                        <div class="w-12 h-12 bg-orange-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                            <svg class="w-6 h-6 text-orange-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                            </svg>
+                        </div>
+                        <div>
+                            <h3 class="font-semibold text-gray-900 mb-2">Office Hours</h3>
+                            <p class="text-gray-600">
+                                Monday - Friday: 8:00 AM - 8:00 PM<br>
+                                Saturday: 9:00 AM - 5:00 PM<br>
+                                Sunday: Closed
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+    </section>
+
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-8 mt-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <p class="text-gray-400">© 2024 HealthCare. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Doctors - HealthCare Clinic</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * { font-family: 'Inter', sans-serif; }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800">
+    <!-- Header -->
+    <nav class="fixed w-full bg-white/90 backdrop-blur-md z-50 border-b border-gray-100">
+        <div class="max-w-6xl mx-auto px-6 py-4">
+            <div class="flex justify-between items-center">
+                <div class="text-xl font-semibold text-teal-600">HealthCare+</div>
+                
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex items-center gap-8">
+                    <a href="/" class="text-gray-700 hover:text-teal-600 transition font-medium text-sm">Home</a>
+                    <a href="/doctors" class="text-teal-600 transition font-medium text-sm">Doctors</a>
+                    <a href="/book" class="text-gray-700 hover:text-teal-600 transition font-medium text-sm">Book Appointment</a>
+                    <a href="/my-appointments" class="text-gray-700 hover:text-teal-600 transition font-medium text-sm">My Appointments</a>
+                    <a href="/about" class="text-gray-700 hover:text-teal-600 transition font-medium text-sm">About</a>
+                    <a href="/contact" class="text-gray-700 hover:text-teal-600 transition font-medium text-sm">Contact</a>
+                    
+                </div>
+
+                <a href="/book" class="hidden md:block bg-teal-600 text-white px-6 py-2.5 rounded-lg text-sm font-medium hover:bg-teal-700 transition">
+    Book Now
+</a>
+
+                <!-- Mobile Menu Button -->
+                <button id="mobileMenuBtn" class="md:hidden text-gray-700">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+            </div>
+
+            <!-- Mobile Menu -->
+            <div id="mobileMenu" class="hidden md:hidden pt-4 pb-2">
+                <div class="flex flex-col gap-3">
+                    <a href="/" class="text-gray-700 hover:text-teal-600 transition font-medium text-sm py-2">Home</a>
+                    <a href="/doctors" class="text-teal-600 transition font-medium text-sm py-2">Doctors</a>
+                    <a href="/book" class="text-gray-700 hover:text-teal-600 transition font-medium text-sm py-2">Book Appointment</a>
+                    <a href="/my-appointments" class="text-gray-700 hover:text-teal-600 transition font-medium text-sm py-2">My Appointments</a>
+                    <a href="/about" class="text-gray-700 hover:text-teal-600 transition font-medium text-sm py-2">About</a>
+                    <a href="/contact" class="text-gray-700 hover:text-teal-600 transition font-medium text-sm py-2">Contact</a>
+                    
+                    <a href="/book" class="hidden md:block bg-teal-600 text-white px-6 py-2.5 rounded-lg text-sm font-medium hover:bg-teal-700 transition">
+    Book Now
+</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="pt-32 pb-12 px-6 bg-white">
+        <div class="max-w-6xl mx-auto text-center">
+            <h1 class="text-5xl font-semibold text-gray-900 mb-4">Meet Our Doctors</h1>
+            <p class="text-lg text-gray-600 font-light max-w-2xl mx-auto">
+                Our team of experienced medical professionals is dedicated to providing you with the highest quality care
+            </p>
+        </div>
+    </section>
+
+    <!-- Search and Filter -->
+    <section class="py-8 px-6 bg-white border-b border-gray-100">
+        <div class="max-w-6xl mx-auto">
+            <div class="flex flex-col md:flex-row gap-4">
+                <!-- Search -->
+                <div class="flex-1">
+                    <input type="text" 
+                           id="searchInput" 
+                           placeholder="Search by name..." 
+                           class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-teal-600 font-light">
+                </div>
+                
+                <!-- Filter by Specialization -->
+                <select id="specializationFilter" 
+                        class="px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-teal-600 font-light">
+                    <option value="all">All Specializations</option>
+                    <option value="general">General Physician</option>
+                    <option value="pediatrician">Pediatrician</option>
+                    <option value="cardiologist">Cardiologist</option>
+                    <option value="dermatologist">Dermatologist</option>
+                    <option value="orthopedic">Orthopedic</option>
+                    <option value="gynecologist">Gynecologist</option>
+                </select>
+            </div>
+        </div>
+    </section>
+
+    <!-- Doctors Grid -->
+    <section class="py-16 px-6 bg-gray-50">
+        <div class="max-w-6xl mx-auto">
+            <div id="doctorsGrid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                
+                <!-- Doctor Card 1 -->
+                <div class="doctor-card bg-white rounded-xl shadow-sm hover:shadow-md transition" data-name="rajesh kumar" data-specialization="general">
+                    <div class="relative h-64 overflow-hidden rounded-t-xl">
+                        <img src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=400&q=80" 
+                             alt="Dr. Rajesh Kumar" 
+                             class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold text-gray-900 mb-1">Dr. Rajesh Kumar</h3>
+                        <p class="text-teal-600 text-sm font-medium mb-3">General Physician</p>
+                        <p class="text-gray-600 text-sm font-light mb-4">MBBS, MD - 15 years experience</p>
+                        
+                        <div class="mb-4 pb-4 border-b border-gray-100">
+                            <p class="text-sm text-gray-700 font-medium mb-2">Available Timings:</p>
+                            <p class="text-sm text-gray-600 font-light">Mon - Sat: 9:00 AM - 2:00 PM</p>
+                            <p class="text-sm text-gray-600 font-light">Evening: 5:00 PM - 8:00 PM</p>
+                        </div>
+                        
+                        <a href="/book?doctor=rajesh-kumar" 
+                           class="block w-full bg-teal-600 text-white text-center px-6 py-3 rounded-lg font-medium hover:bg-teal-700 transition">
+                            Book Appointment
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Doctor Card 2 -->
+                <div class="doctor-card bg-white rounded-xl shadow-sm hover:shadow-md transition" data-name="priya sharma" data-specialization="pediatrician">
+                    <div class="relative h-64 overflow-hidden rounded-t-xl">
+                        <img src="https://images.unsplash.com/photo-1594824476967-48c8b964273f?w=400&q=80" 
+                             alt="Dr. Priya Sharma" 
+                             class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold text-gray-900 mb-1">Dr. Priya Sharma</h3>
+                        <p class="text-teal-600 text-sm font-medium mb-3">Pediatrician</p>
+                        <p class="text-gray-600 text-sm font-light mb-4">MBBS, MD Pediatrics - 12 years experience</p>
+                        
+                        <div class="mb-4 pb-4 border-b border-gray-100">
+                            <p class="text-sm text-gray-700 font-medium mb-2">Available Timings:</p>
+                            <p class="text-sm text-gray-600 font-light">Mon - Sat: 10:00 AM - 1:00 PM</p>
+                            <p class="text-sm text-gray-600 font-light">Evening: 4:00 PM - 7:00 PM</p>
+                        </div>
+                        
+                        <a href="/book?doctor=priya-sharma" 
+                           class="block w-full bg-teal-600 text-white text-center px-6 py-3 rounded-lg font-medium hover:bg-teal-700 transition">
+                            Book Appointment
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Doctor Card 3 -->
+                <div class="doctor-card bg-white rounded-xl shadow-sm hover:shadow-md transition" data-name="amit patel" data-specialization="cardiologist">
+                    <div class="relative h-64 overflow-hidden rounded-t-xl">
+                        <img src="https://images.unsplash.com/photo-1622253692010-333f2da6031d?w=400&q=80" 
+                             alt="Dr. Amit Patel" 
+                             class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold text-gray-900 mb-1">Dr. Amit Patel</h3>
+                        <p class="text-teal-600 text-sm font-medium mb-3">Cardiologist</p>
+                        <p class="text-gray-600 text-sm font-light mb-4">MBBS, DM Cardiology - 18 years experience</p>
+                        
+                        <div class="mb-4 pb-4 border-b border-gray-100">
+                            <p class="text-sm text-gray-700 font-medium mb-2">Available Timings:</p>
+                            <p class="text-sm text-gray-600 font-light">Mon, Wed, Fri: 11:00 AM - 2:00 PM</p>
+                            <p class="text-sm text-gray-600 font-light">Tue, Thu: 5:00 PM - 8:00 PM</p>
+                        </div>
+                        
+                        <a href="/book?doctor=amit-patel" 
+                           class="block w-full bg-teal-600 text-white text-center px-6 py-3 rounded-lg font-medium hover:bg-teal-700 transition">
+                            Book Appointment
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Doctor Card 4 -->
+                <div class="doctor-card bg-white rounded-xl shadow-sm hover:shadow-md transition" data-name="sneha reddy" data-specialization="dermatologist">
+                    <div class="relative h-64 overflow-hidden rounded-t-xl">
+                        <img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=400&q=80" 
+                             alt="Dr. Sneha Reddy" 
+                             class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold text-gray-900 mb-1">Dr. Sneha Reddy</h3>
+                        <p class="text-teal-600 text-sm font-medium mb-3">Dermatologist</p>
+                        <p class="text-gray-600 text-sm font-light mb-4">MBBS, MD Dermatology - 10 years experience</p>
+                        
+                        <div class="mb-4 pb-4 border-b border-gray-100">
+                            <p class="text-sm text-gray-700 font-medium mb-2">Available Timings:</p>
+                            <p class="text-sm text-gray-600 font-light">Mon - Sat: 9:00 AM - 12:00 PM</p>
+                            <p class="text-sm text-gray-600 font-light">Evening: 6:00 PM - 8:00 PM</p>
+                        </div>
+                        
+                        <a href="/book?doctor=sneha-reddy" 
+                           class="block w-full bg-teal-600 text-white text-center px-6 py-3 rounded-lg font-medium hover:bg-teal-700 transition">
+                            Book Appointment
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Doctor Card 5 -->
+                <div class="doctor-card bg-white rounded-xl shadow-sm hover:shadow-md transition" data-name="vikram singh" data-specialization="orthopedic">
+                    <div class="relative h-64 overflow-hidden rounded-t-xl">
+                        <img src="https://images.unsplash.com/photo-1537368910025-700350fe46c7?w=400&q=80" 
+                             alt="Dr. Vikram Singh" 
+                             class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold text-gray-900 mb-1">Dr. Vikram Singh</h3>
+                        <p class="text-teal-600 text-sm font-medium mb-3">Orthopedic Surgeon</p>
+                        <p class="text-gray-600 text-sm font-light mb-4">MBBS, MS Orthopedics - 14 years experience</p>
+                        
+                        <div class="mb-4 pb-4 border-b border-gray-100">
+                            <p class="text-sm text-gray-700 font-medium mb-2">Available Timings:</p>
+                            <p class="text-sm text-gray-600 font-light">Mon - Fri: 10:00 AM - 1:00 PM</p>
+                            <p class="text-sm text-gray-600 font-light">Evening: 5:00 PM - 7:00 PM</p>
+                        </div>
+                        
+                        <a href="/book?doctor=vikram-singh" 
+                           class="block w-full bg-teal-600 text-white text-center px-6 py-3 rounded-lg font-medium hover:bg-teal-700 transition">
+                            Book Appointment
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Doctor Card 6 -->
+                <div class="doctor-card bg-white rounded-xl shadow-sm hover:shadow-md transition" data-name="anjali mehta" data-specialization="gynecologist">
+                    <div class="relative h-64 overflow-hidden rounded-t-xl">
+                        <img src="https://images.unsplash.com/photo-1551884170-09fb70a3a2ed?w=400&q=80" 
+                             alt="Dr. Anjali Mehta" 
+                             class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold text-gray-900 mb-1">Dr. Anjali Mehta</h3>
+                        <p class="text-teal-600 text-sm font-medium mb-3">Gynecologist</p>
+                        <p class="text-gray-600 text-sm font-light mb-4">MBBS, MD Gynecology - 16 years experience</p>
+                        
+                        <div class="mb-4 pb-4 border-b border-gray-100">
+                            <p class="text-sm text-gray-700 font-medium mb-2">Available Timings:</p>
+                            <p class="text-sm text-gray-600 font-light">Mon - Sat: 11:00 AM - 2:00 PM</p>
+                            <p class="text-sm text-gray-600 font-light">Evening: 4:00 PM - 7:00 PM</p>
+                        </div>
+                        
+                        <a href="/book?doctor=anjali-mehta" 
+                           class="block w-full bg-teal-600 text-white text-center px-6 py-3 rounded-lg font-medium hover:bg-teal-700 transition">
+                            Book Appointment
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-gray-400 py-6 px-6">
+        <div class="max-w-6xl mx-auto text-center">
+            <p class="text-sm font-light">&copy; 2025 HealthCare+ Clinic. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Search and Filter functionality
+        const searchInput = document.getElementById('searchInput');
+        const specializationFilter = document.getElementById('specializationFilter');
+        const doctorCards = document.querySelectorAll('.doctor-card');
+
+        function filterDoctors() {
+            const searchTerm = searchInput.value.toLowerCase();
+            const selectedSpecialization = specializationFilter.value;
+
+            doctorCards.forEach(card => {
+                const doctorName = card.getAttribute('data-name');
+                const doctorSpecialization = card.getAttribute('data-specialization');
+                
+                const matchesSearch = doctorName.includes(searchTerm);
+                const matchesSpecialization = selectedSpecialization === 'all' || doctorSpecialization === selectedSpecialization;
+
+                if (matchesSearch && matchesSpecialization) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+
+        searchInput.addEventListener('input', filterDoctors);
+        specializationFilter.addEventListener('change', filterDoctors);
+    </script>
+</body>
+</html>
