@@ -1,15 +1,19 @@
-
+# app.py
 from flask import Flask, render_template, request, redirect, url_for, jsonify
 import mysql.connector
 from datetime import datetime, timedelta
 import re
 import requests
 from transformers import AutoTokenizer, AutoModelForSeq2SeqLM
+from urllib.parse import urlparse
 
 app = Flask(__name__)
 
 YOUTUBE_API_KEY = "AIzaSyCcZaXXE3MODAM1BgE55ALbZMgsSHH3j3k"
 
+# -----------------------------
+# 1️⃣ Diet suggestions dictionary
+# -----------------------------
 CONDITIONS_DIET = {
     "diabetes": {"tips": "🍎 High-fiber foods, whole grains, leafy greens, lean proteins, avoid sugar.", "query": "diabetes diet"},
     "pcos": {"tips": "🥦 Avoid processed sugar, include protein and fiber, anti-inflammatory foods like berries, nuts, greens.", "query": "PCOS diet"},
@@ -24,41 +28,21 @@ CONDITIONS_DIET = {
     "fever": {"tips": "🌡️ Stay hydrated, eat light foods like soups and fruits, avoid oily/heavy meals, get enough rest.", "query": "fever diet"},
     "cold": {"tips": "❄️ Warm fluids, soups, ginger tea, vitamin C-rich fruits, light meals, rest well.", "query": "cold diet"},
     "migraine": {"tips": "🧠 Stay hydrated, avoid triggers like chocolate/caffeine, eat magnesium-rich foods like nuts and leafy greens.", "query": "migraine diet"},
-    "stomach upset": {"tips": "🥣 Eat bland foods like rice, toast, bananas; avoid spicy/fatty foods, drink water.", "query": "stomach upset diet"},
-    "acidity": {"tips": "🥛 Avoid spicy and fried foods, eat small frequent meals, include oatmeal and bananas.", "query": "acidity diet"},
-    "constipation": {"tips": "🌾 High-fiber foods like whole grains, fruits, vegetables; drink plenty of water.", "query": "constipation diet"},
-    "diarrhea": {"tips": "🥣 Eat bananas, rice, toast, yogurt; avoid oily, spicy, and sugary foods.", "query": "diarrhea diet"},
-    "gout": {"tips": "🍒 Avoid red meat, alcohol, sugary drinks; eat cherries, low-fat dairy, and vegetables.", "query": "gout diet"},
-    "osteoporosis": {"tips": "🥛 Include calcium-rich foods like milk, cheese, yogurt; vitamin D sources; weight-bearing exercises.", "query": "osteoporosis diet"},
-    "liver": {"tips": "🥬 Avoid alcohol, fried and processed foods; eat fruits, vegetables, whole grains; stay hydrated.", "query": "liver diet"},
-    "pregnancy": {"tips": "🥗 Balanced diet with fruits, vegetables, whole grains, protein, iron, calcium, folic acid.", "query": "pregnancy diet"},
-    "breastfeeding": {"tips": "🥛 Nutritious foods, adequate protein, calcium, hydration; avoid alcohol and excess caffeine.", "query": "breastfeeding diet"},
-    "diabetic neuropathy": {"tips": "🍎 Low-sugar, high-fiber foods; lean proteins; avoid alcohol; maintain blood sugar levels.", "query": "diabetic neuropathy diet"},
-    "eczema": {"tips": "🥑 Anti-inflammatory foods, omega-3 rich fish, avoid processed foods and allergens.", "query": "eczema diet"},
-    "psoriasis": {"tips": "🥗 Include fruits, vegetables, fatty fish; avoid alcohol, processed foods, and sugary snacks.", "query": "psoriasis diet"},
-    "asthma": {"tips": "🍌 Eat fruits and vegetables, omega-3 rich foods; avoid processed foods and allergens.", "query": "asthma diet"},
-    "ibs": {"tips": "🥣 Eat fiber-rich foods gradually, avoid trigger foods like beans, cabbage, caffeine; hydrate well.", "query": "IBS diet"},
-    "ulcer": {"tips": "🥛 Eat small frequent meals, avoid spicy, acidic, and fried foods; include bananas, oatmeal.", "query": "ulcer diet"},
-    "depression": {"tips": "🍓 Include omega-3 fatty acids, whole grains, lean protein, leafy greens; limit processed sugar.", "query": "depression diet"},
-    "anxiety": {"tips": "🥦 Eat magnesium-rich foods like spinach, nuts; maintain balanced meals, hydrate, avoid caffeine.", "query": "anxiety diet"},
-    "acne": {"tips": "🍓 Eat fruits, vegetables, whole grains, lean protein; avoid excessive dairy and sugary foods.", "query": "acne diet"},
-    "hairfall": {"tips": "🥚 Protein-rich foods, iron, zinc, biotin sources like eggs, nuts, leafy greens.", "query": "hair fall diet"},
-    "dandruff": {"tips": "🥑 Omega-3 rich foods, vitamin B, hydration; avoid excess sugar and junk foods.", "query": "dandruff diet"},
-    "dry skin": {"tips": "🥥 Healthy fats like nuts, seeds, avocado; hydrate well; vitamin E rich foods.", "query": "dry skin diet"},
-    "eczema skin": {"tips": "🥦 Anti-inflammatory foods, fatty fish, avoid processed and allergenic foods.", "query": "eczema diet"},
-    "psoriasis skin": {"tips": "🥗 Omega-3 rich foods, fruits, vegetables; avoid alcohol, processed foods, and sugar.", "query": "psoriasis diet"},
-    "oily skin": {"tips": "🥬 Include fiber-rich foods, stay hydrated; avoid fried and sugary foods.", "query": "oily skin diet"},
-    "premature graying": {"tips": "🥚 Protein-rich foods, vitamin B12, iron, copper sources; avoid stress and smoking.", "query": "premature graying diet"},
-    "brittle nails": {"tips": "🥜 Biotin, protein, iron, zinc rich foods; hydrate well.", "query": "brittle nails diet"}
+    "stomach upset": {"tips": "🥣 Eat bland foods like rice, toast, bananas; avoid spicy/fatty foods, drink water.", "query": "stomach upset diet"}
 }
 
+# Aliases
 CONDITIONS_DIET["pcod"] = {"alias": "pcos"}
 
-
+# -----------------------------
+# 2️⃣ Initialize AI generator
+# -----------------------------
 tokenizer = AutoTokenizer.from_pretrained("google/flan-t5-small")
 model = AutoModelForSeq2SeqLM.from_pretrained("google/flan-t5-small")
 
-
+# -----------------------------
+# 3️⃣ Helper functions
+# -----------------------------
 def get_youtube_videos(query, max_results=3):
     url = (
         f"https://www.googleapis.com/youtube/v3/search"
@@ -98,21 +82,70 @@ def generate_fallback_response(user_input):
     text = tokenizer.decode(outputs[0], skip_special_tokens=True)
     return text
 
+# -----------------------------
+# 4️⃣ News fetching function
+# -----------------------------
+NEWS_API_KEY = "dbe57b028aeb41e285a226a94865f7a7"
 
+def get_articles_for_condition(condition, num_articles=3):
+    query = CONDITIONS_DIET.get(condition, {}).get("query", condition)
+    query = query + " health OR wellness OR nutrition"
+    seven_days_ago = (datetime.now() - timedelta(days=7)).strftime("%Y-%m-%d")
+    url = f"https://newsapi.org/v2/everything?q={query}&from={seven_days_ago}&sortBy=publishedAt&apiKey={NEWS_API_KEY}"
+    r = requests.get(url)
+    data = r.json()
+    articles_list = []
+
+    if data.get("status") != "ok":
+        articles_list.append(f"Error fetching articles: {data.get('message')}")
+    else:
+        articles = data.get("articles", [])
+        if not articles:
+            articles_list.append(f"No recent articles found. Try this search: https://www.google.com/search?q={query.replace(' ', '+')}+site:healthline.com")
+        else:
+            for article in articles[:num_articles]:
+                articles_list.append(f"{article['title']}: {article['url']}")
+    return articles_list
+
+# -----------------------------
+# 5️⃣ Chatbot route
+# -----------------------------
 @app.route("/chat", methods=["POST"])
 def chat():
     user_message = request.json.get("message", "").lower()
     condition = get_condition_from_input(user_message)
 
+    # Always generate trusted medical search links
+    trusted_sites = [
+        f"https://www.webmd.com/search/search_results/default.aspx?query={condition}",
+        f"https://www.mayoclinic.org/search/search-results?q={condition}",
+        f"https://www.nih.gov/search?utf8=%E2%9C%93&affiliate=nih&query={condition}",
+    ]
+
     if condition:
         tips = CONDITIONS_DIET.get(condition, {}).get("tips", "❌ No diet tips found for this condition.")
+        articles = get_articles_for_condition(condition)
 
+        # ✅ Articles HTML
+        if articles:
+            articles_html = ""
+            for article in articles:
+                if ": " in article:
+                    title, url = article.split(": ", 1)
+                    articles_html += f"• <a href='{url}' target='_blank'>{title}</a><br>"
+                else:
+                    articles_html += f"• {article}<br>"
+        else:
+            articles_html = ""
+            for site in trusted_sites:
+                articles_html += f"• <a href='{site}' target='_blank'>{site}</a><br>"
 
         # ✅ YouTube videos (Real Titles)
         videos_html = get_youtube_videos(condition)
 
         bot_reply = f"""
 <b>Diet Tips:</b><br>{tips}<br><br>
+<b>Trusted Medical Resources:</b><br>{articles_html}<br>
 <b>Videos:</b><br>{videos_html}<br>
 <i>⚠️ This is not medical advice. Please consult a doctor.</i>
 """
@@ -122,6 +155,10 @@ def chat():
     return jsonify({"reply": bot_reply})
 
 
+
+# -----------------------------
+# 6️⃣ Database connection
+# -----------------------------
 def get_db_connection():
     return mysql.connector.connect(
         host="localhost",
@@ -130,6 +167,9 @@ def get_db_connection():
         database="doctor_appointment"
     )
 
+# -----------------------------
+# 7️⃣ Routes for pages (homepage, book, etc.)
+# -----------------------------
 @app.route('/')
 def home():
     return render_template('homepage.html')
