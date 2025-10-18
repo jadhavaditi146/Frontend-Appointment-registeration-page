@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Appointment - HealthCare Clinic</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * { font-family: 'Inter', sans-serif; }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800">
+
+<!-- Header -->
+<nav class="fixed w-full bg-white/90 backdrop-blur-md z-50 border-b border-gray-100">
+    <div class="max-w-6xl mx-auto px-6 py-4">
+        <div class="flex justify-between items-center">
+            <div class="text-xl font-semibold text-teal-600">HealthCare+</div>
+            
+            <!-- Desktop Menu -->
+            <div class="hidden md:flex items-center gap-8">
+                <a href="/" class="text-gray-700 hover:text-teal-600 transition font-medium text-sm">Home</a>
+                <a href="/doctors" class="text-gray-700 hover:text-teal-600 transition font-medium text-sm">Doctors</a>
+                <a href="/book" class="text-teal-600 transition font-medium text-sm">Book Appointment</a>
+                <a href="/my-appointments" class="text-gray-700 hover:text-teal-600 transition font-medium text-sm">My Appointments</a>
+                <a href="/about" class="text-gray-700 hover:text-teal-600 transition font-medium text-sm">About</a>
+                <a href="/contact" class="text-gray-700 hover:text-teal-600 transition font-medium text-sm">Contact</a>
+            </div>
+
+            <a href="/book" class="hidden md:block bg-teal-600 text-white px-6 py-2.5 rounded-lg text-sm font-medium hover:bg-teal-700 transition">
+                Book Now
+            </a>
+
+            <!-- Mobile Menu Button -->
+            <button id="mobileMenuBtn" class="md:hidden text-gray-700">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                </svg>
+            </button>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobileMenu" class="hidden md:hidden pt-4 pb-2">
+            <div class="flex flex-col gap-3">
+                <a href="/" class="text-gray-700 hover:text-teal-600 transition font-medium text-sm py-2">Home</a>
+                <a href="/doctors" class="text-gray-700 hover:text-teal-600 transition font-medium text-sm py-2">Doctors</a>
+                <a href="/book" class="text-teal-600 transition font-medium text-sm py-2">Book Appointment</a>
+                <a href="/my-appointments" class="text-gray-700 hover:text-teal-600 transition font-medium text-sm py-2">My Appointments</a>
+                <a href="/about" class="text-gray-700 hover:text-teal-600 transition font-medium text-sm py-2">About</a>
+                <a href="/contact" class="text-gray-700 hover:text-teal-600 transition font-medium text-sm py-2">Contact</a>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<!-- Hero Section -->
+<section class="pt-32 pb-12 px-6 bg-white">
+    <div class="max-w-3xl mx-auto text-center">
+        <h1 class="text-5xl font-semibold text-gray-900 mb-4">Book Your Appointment</h1>
+        <p class="text-lg text-gray-600 font-light">
+            Fill in the details below and we'll confirm your appointment shortly
+        </p>
+    </div>
+</section>
+
+<!-- Booking Form -->
+<section class="py-16 px-6">
+    <div class="max-w-3xl mx-auto">
+        <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-8 md:p-12">
+            <form action="/book" method="POST">
+                
+                <!-- Personal Information -->
+                <div class="mb-8">
+                    <h2 class="text-xl font-semibold text-gray-900 mb-6">Personal Information</h2>
+                    
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Full Name *</label>
+                            <input type="text" name="full_name" required
+                                   class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-teal-600 font-light"
+                                   placeholder="John Doe">
+                        </div>
+                        
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Email Address *</label>
+                            <input type="email" name="email" required
+                                   class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-teal-600 font-light"
+                                   placeholder="john@example.com">
+                        </div>
+                    </div>
+
+                    <div class="grid md:grid-cols-2 gap-6 mt-6">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Phone Number *</label>
+                            <input type="tel" name="phone" required
+                                   class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-teal-600 font-light"
+                                   placeholder="+91 98765 43210">
+                        </div>
+                        
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Age</label>
+                            <input type="number" name="age" min="1" max="120"
+                                   class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-teal-600 font-light"
+                                   placeholder="25">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Appointment Details -->
+                <div class="mb-8">
+                    <h2 class="text-xl font-semibold text-gray-900 mb-6">Appointment Details</h2>
+                    
+                    <div class="mb-6">
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Select Doctor *</label>
+                        <select name="doctor_id" id="doctorSelect" required
+                                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-teal-600 font-light">
+                            <option value="">Choose a doctor</option>
+                            {% for doctor in doctors %}
+                                <option value="{{ doctor.id }}">
+                                    {{ doctor.name }} - {{ doctor.specialization }}
+                                </option>
+                            {% endfor %}
+                        </select>
+                    </div>
+
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Appointment Date *</label>
+                            <input type="date" name="appointment_date" id="appointmentDate" required
+                                   class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-teal-600 font-light">
+                        </div>
+                        
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Preferred Time *</label>
+                            <select name="appointment_time" required
+                                    class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-teal-600 font-light">
+                                <option value="">Select time</option>
+                                <option value="09:00">09:00 AM</option>
+                                <option value="09:30">09:30 AM</option>
+                                <option value="10:00">10:00 AM</option>
+                                <option value="10:30">10:30 AM</option>
+                                <option value="11:00">11:00 AM</option>
+                                <option value="11:30">11:30 AM</option>
+                                <option value="12:00">12:00 PM</option>
+                                <option value="14:00">02:00 PM</option>
+                                <option value="14:30">02:30 PM</option>
+                                <option value="15:00">03:00 PM</option>
+                                <option value="15:30">03:30 PM</option>
+                                <option value="16:00">04:00 PM</option>
+                                <option value="16:30">04:30 PM</option>
+                                <option value="17:00">05:00 PM</option>
+                                <option value="17:30">05:30 PM</option>
+                                <option value="18:00">06:00 PM</option>
+                                <option value="18:30">06:30 PM</option>
+                                <option value="19:00">07:00 PM</option>
+                                <option value="19:30">07:30 PM</option>
+                                <option value="20:00">08:00 PM</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Additional Information -->
+                <div class="mb-8">
+                    <label class="block text-sm font-medium text-gray-700 mb-2">Reason for Visit / Message</label>
+                    <textarea name="message" rows="4"
+                              class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-teal-600 font-light"
+                              placeholder="Please describe your symptoms or reason for visit..."></textarea>
+                </div>
+
+                <!-- Terms and Conditions -->
+                <!-- Terms and Conditions -->
+<div class="mb-8">
+    <label class="flex items-start">
+        <input type="checkbox" name="terms" required
+               class="mt-1 mr-3 w-4 h-4 text-teal-600 border-gray-300 rounded focus:ring-teal-600">
+        <span class="text-sm text-gray-600 font-light">
+            I agree to the terms and conditions and understand that this appointment is subject to confirmation by the clinic. I will receive a confirmation via email or phone.
+        </span>
+    </label>
+</div>
+
+<!-- Submit Button -->
+<div class="flex gap-4">
+    <button type="submit"
+            class="flex-1 bg-teal-600 text-white px-8 py-4 rounded-lg font-medium hover:bg-teal-700 transition shadow-sm">
+        Book Appointment
+    </button>
+
+    <a href="/doctors"
+       class="px-8 py-4 border border-gray-300 rounded-lg font-medium text-gray-700 hover:border-teal-600 hover:text-teal-600 transition text-center">
+        Cancel
+    </a>
+</div>
+
+</form>
+</div> <!-- End of form container -->
+</div> <!-- End of max-w-3xl container -->
+</section>
+<!-- Chatbot Button -->
+<div id="chatbot-button" class="fixed bottom-5 right-5 bg-teal-600 text-white px-5 py-3 rounded-full shadow-lg cursor-pointer hover:bg-teal-700 transition z-50">
+  Ask AI
+</div>
+
+<!-- Chatbot Popup -->
+<div id="chatbot-popup" class="hidden fixed bottom-20 right-5 w-80 md:w-96 max-h-[80vh] bg-white shadow-xl rounded-xl flex flex-col overflow-hidden border border-gray-200 z-50">
+  
+  <!-- Header -->
+  <div id="chatbot-header" class="bg-teal-600 text-white px-4 py-3 flex justify-between items-center">
+    <span class="font-semibold text-lg">Ask Diet AI</span>
+    <button id="close-btn" class="text-white text-xl font-bold hover:text-gray-200">×</button>
+  </div>
+  
+  <!-- Messages -->
+  <div id="chatbot-messages" class="flex-1 p-4 overflow-y-auto space-y-2">
+    <!-- Messages appear here -->
+  </div>
+  
+  <!-- Input Area -->
+  <div class="flex border-t border-gray-200 p-3 bg-gray-50">
+    <input id="chatbot-input" type="text" placeholder="Type your question..." class="flex-1 px-3 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-teal-500">
+    <button id="send-btn" class="ml-2 bg-teal-600 text-white px-4 py-2 rounded-lg hover:bg-teal-700 transition">Send</button>
+  </div>
+</div>
+
+    <script src="{{ url_for('static', filename='chatbot.js') }}"></script>
+</body>
+</html>
+
+

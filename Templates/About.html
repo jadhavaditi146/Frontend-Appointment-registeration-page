@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - HealthCare Clinic</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * { font-family: 'Inter', sans-serif; }
+    </style>
+</head>
+<body class="bg-white text-gray-800">
+    <!-- Header -->
+    <nav class="fixed w-full bg-white/90 backdrop-blur-md z-50 border-b border-gray-100">
+        <div class="max-w-6xl mx-auto px-6 py-4">
+            <div class="flex justify-between items-center">
+                <div class="text-xl font-semibold text-teal-600">HealthCare+</div>
+                
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex items-center gap-8">
+                    <a href="/" class="text-gray-700 hover:text-teal-600 transition font-medium text-sm">Home</a>
+                    <a href="/doctors" class="text-gray-700 hover:text-teal-600 transition font-medium text-sm">Doctors</a>
+                    <a href="/book" class="text-gray-700 hover:text-teal-600 transition font-medium text-sm">Book Appointment</a>
+                    <a href="/my-appointments" class="text-gray-700 hover:text-teal-600 transition font-medium text-sm">My Appointments</a>
+                    <a href="/about" class="text-teal-600 transition font-medium text-sm">About</a>
+                    <a href="/contact" class="text-gray-700 hover:text-teal-600 transition font-medium text-sm">Contact</a>
+                </div>
+
+                <a href="/book" class="hidden md:block bg-teal-600 text-white px-6 py-2.5 rounded-lg text-sm font-medium hover:bg-teal-700 transition">
+    Book Now
+</a>
+
+                <!-- Mobile Menu Button -->
+                <button id="mobileMenuBtn" class="md:hidden text-gray-700">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+            </div>
+
+            <!-- Mobile Menu -->
+            <div id="mobileMenu" class="hidden md:hidden pt-4 pb-2">
+                <div class="flex flex-col gap-3">
+                    <a href="/" class="text-gray-700 hover:text-teal-600 transition font-medium text-sm py-2">Home</a>
+                    <a href="/doctors" class="text-gray-700 hover:text-teal-600 transition font-medium text-sm py-2">Doctors</a>
+                    <a href="/book" class="text-gray-700 hover:text-teal-600 transition font-medium text-sm py-2">Book Appointment</a>
+                    <a href="/my-appointments" class="text-gray-700 hover:text-teal-600 transition font-medium text-sm py-2">My Appointments</a>
+                    <a href="/about" class="text-teal-600 transition font-medium text-sm py-2">About</a>
+                    <a href="/contact" class="text-gray-700 hover:text-teal-600 transition font-medium text-sm py-2">Contact</a
+                    <a href="/book" class="hidden md:block bg-teal-600 text-white px-6 py-2.5 rounded-lg text-sm font-medium hover:bg-teal-700 transition">
+    Book Now
+</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="pt-32 pb-16 px-6 bg-gradient-to-b from-teal-50 to-white">
+        <div class="max-w-6xl mx-auto text-center">
+            <h1 class="text-5xl font-semibold text-gray-900 mb-6">About HealthCare+</h1>
+            <p class="text-xl text-gray-600 font-light max-w-3xl mx-auto leading-relaxed">
+                Committed to providing exceptional healthcare services with compassion, expertise, and state-of-the-art medical technology since 2010.
+            </p>
+        </div>
+    </section>
+
+    <!-- Mission & Vision -->
+    <section class="py-20 px-6">
+        <div class="max-w-6xl mx-auto">
+            <div class="grid md:grid-cols-2 gap-12">
+                <div class="bg-teal-50 rounded-2xl p-8">
+                    <div class="w-14 h-14 bg-teal-600 rounded-xl flex items-center justify-center mb-6">
+                        <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                        </svg>
+                    </div>
+                    <h2 class="text-3xl font-semibold text-gray-900 mb-4">Our Mission</h2>
+                    <p class="text-gray-700 font-light leading-relaxed">
+                        To deliver comprehensive, patient-centered healthcare that improves the quality of life for our community. We strive to provide accessible, affordable, and high-quality medical care while treating each patient with dignity and respect.
+                    </p>
+                </div>
+
+                <div class="bg-indigo-50 rounded-2xl p-8">
+                    <div class="w-14 h-14 bg-indigo-600 rounded-xl flex items-center justify-center mb-6">
+                        <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>
+                        </svg>
+                    </div>
+                    <h2 class="text-3xl font-semibold text-gray-900 mb-4">Our Vision</h2>
+                    <p class="text-gray-700 font-light leading-relaxed">
+                        To be the leading healthcare provider in the region, recognized for excellence in patient care, medical innovation, and community health initiatives. We envision a healthier future where quality healthcare is accessible to all.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Our Story -->
+    <section class="py-20 px-6 bg-gray-50">
+        <div class="max-w-6xl mx-auto">
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div>
+                    <h2 class="text-4xl font-semibold text-gray-900 mb-6">Our Story</h2>
+                    <div class="space-y-4 text-gray-700 font-light leading-relaxed">
+                        <p>
+                            HealthCare+ Clinic was established in 2010 with a simple yet powerful vision: to provide world-class healthcare services to our community. What started as a small family practice has grown into a comprehensive medical facility serving thousands of patients annually.
+                        </p>
+                        <p>
+                            Over the years, we've expanded our services, upgraded our facilities, and assembled a team of highly qualified medical professionals dedicated to patient care. Our commitment to excellence has earned us the trust of families across the region.
+                        </p>
+                        <p>
+                            Today, we continue to evolve, embracing new medical technologies and treatment methods while maintaining the personal touch that has always defined our practice. Our patients are not just numbers—they're members of our extended healthcare family.
+                        </p>
+                    </div>
+                </div>
+                <div>
+                    <img src="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=600&q=80" 
+                         alt="Clinic building" 
+                         class="rounded-2xl shadow-lg w-full h-96 object-cover">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Values -->
+    <section class="py-20 px-6">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-semibold text-gray-900 mb-4">Our Core Values</h2>
+                <p class="text-lg text-gray-600 font-light">The principles that guide everything we do</p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="text-center">
+                    <div class="w-16 h-16 bg-teal-100 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                        <svg class="w-8 h-8 text-teal-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-3">Compassion</h3>
+                    <p class="text-gray-600 font-light">We treat every patient with empathy, kindness, and understanding.</p>
+                </div>
+
+                <div class="text-center">
+                    <div class="w-16 h-16 bg-blue-100 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                        <svg class="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-3">Excellence</h3>
+                    <p class="text-gray-600 font-light">We maintain the highest standards in medical care and service delivery.</p>
+                </div>
+
+                <div class="text-center">
+                    <div class="w-16 h-16 bg-purple-100 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                        <svg class="w-8 h-8 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-3">Integrity</h3>
+                    <p class="text-gray-600 font-light">We conduct ourselves with honesty, transparency, and ethical practices.</p>
+                </div>
+
+                <div class="text-center">
+                    <div class="w-16 h-16 bg-green-100 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                        <svg class="w-8 h-8 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-3">Innovation</h3>
+                    <p class="text-gray-600 font-light">We embrace new technologies and methods to improve patient outcomes.</p>
+                </div>
+
+                <div class="text-center">
+                    <div class="w-16 h-16 bg-orange-100 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                        <svg class="w-8 h-8 text-orange-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-3">Collaboration</h3>
+                    <p class="text-gray-600 font-light">We work together as a team to provide comprehensive care.</p>
+                </div>
+
+                <div class="text-center">
+                    <div class="w-16 h-16 bg-red-100 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                        <svg class="w-8 h-8 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-3">Accessibility</h3>
+                    <p class="text-gray-600 font-light">We make quality healthcare available and affordable to all.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section class="py-20 px-6 bg-gray-50">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-semibold text-gray-900 mb-4">Meet Our Leadership</h2>
+                <p class="text-lg text-gray-600 font-light">Experienced professionals dedicated to your care</p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-md transition">
+                    <div class="relative h-72 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=400&q=80" 
+                             alt="Dr. Rajesh Kumar" 
+                             class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6 text-center">
+                        <h3 class="text-xl font-semibold text-gray-900 mb-1">Dr. Rajesh Kumar</h3>
+                        <p class="text-teal-600 text-sm font-medium mb-2">Chief Medical Officer</p>
+                        <p class="text-gray-600 text-sm font-light">MBBS, MD - Leading our medical team with 15+ years of experience</p>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-md transition">
+                    <div class="relative h-72 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1594824476967-48c8b964273f?w=400&q=80" 
+                             alt="Dr. Priya Sharma" 
+                             class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6 text-center">
+                        <h3 class="text-xl font-semibold text-gray-900 mb-1">Dr. Priya Sharma</h3>
+                        <p class="text-teal-600 text-sm font-medium mb-2">Head of Pediatrics</p>
+                        <p class="text-gray-600 text-sm font-light">MD Pediatrics - Specializing in child healthcare and development</p>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-md transition">
+                    <div class="relative h-72 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1622253692010-333f2da6031d?w=400&q=80" 
+                             alt="Dr. Amit Patel" 
+                             class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6 text-center">
+                        <h3 class="text-xl font-semibold text-gray-900 mb-1">Dr. Amit Patel</h3>
+                        <p class="text-teal-600 text-sm font-medium mb-2">Director of Cardiology</p>
+                        <p class="text-gray-600 text-sm font-light">DM Cardiology - Expert in cardiovascular health with 18+ years</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="py-20 px-6 bg-teal-600 text-white">
+        <div class="max-w-6xl mx-auto">
+            <div class="grid md:grid-cols-4 gap-8 text-center">
+                <div>
+                    <div class="text-5xl font-bold mb-2">15+</div>
+                    <div class="text-teal-100 font-light">Years of Service</div>
+                </div>
+                <div>
+                    <div class="text-5xl font-bold mb-2">500+</div>
+                    <div class="text-teal-100 font-light">Happy Patients</div>
+                </div>
+                <div>
+                    <div class="text-5xl font-bold mb-2">15</div>
+                    <div class="text-teal-100 font-light">Expert Doctors</div>
+                </div>
+                <div>
+                    <div class="text-5xl font-bold mb-2">98%</div>
+                    <div class="text-teal-100 font-light">Satisfaction Rate</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-20 px-6">
+        <div class="max-w-4xl mx-auto text-center">
+            <h2 class="text-4xl font-semibold text-gray-900 mb-6">Ready to Experience Quality Healthcare?</h2>
+            <p class="text-lg text-gray-600 font-light mb-8">
+                Join thousands of satisfied patients who trust us with their health
+            </p>
+            <a href="/book" class="inline-block bg-teal-600 text-white px-8 py-4 rounded-lg font-medium hover:bg-teal-700 transition shadow-sm">
+                Book Your Appointment Today
+            </a>
+        </div>
+    </section>
+
+    <!-- Chatbot Button -->
+<div id="chatbot-button" class="fixed bottom-5 right-5 bg-teal-600 text-white px-5 py-3 rounded-full shadow-lg cursor-pointer hover:bg-teal-700 transition z-50">
+  Ask AI
+</div>
+
+<!-- Chatbot Popup -->
+<div id="chatbot-popup" class="hidden fixed bottom-20 right-5 w-80 md:w-96 max-h-[80vh] bg-white shadow-xl rounded-xl flex flex-col overflow-hidden border border-gray-200 z-50">
+  
+  <!-- Header -->
+  <div id="chatbot-header" class="bg-teal-600 text-white px-4 py-3 flex justify-between items-center">
+    <span class="font-semibold text-lg">Ask Diet AI</span>
+    <button id="close-btn" class="text-white text-xl font-bold hover:text-gray-200">×</button>
+  </div>
+  
+  <!-- Messages -->
+  <div id="chatbot-messages" class="flex-1 p-4 overflow-y-auto space-y-2">
+    <!-- Messages appear here -->
+  </div>
+  
+  <!-- Input Area -->
+  <div class="flex border-t border-gray-200 p-3 bg-gray-50">
+    <input id="chatbot-input" type="text" placeholder="Type your question..." class="flex-1 px-3 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-teal-500">
+    <button id="send-btn" class="ml-2 bg-teal-600 text-white px-4 py-2 rounded-lg hover:bg-teal-700 transition">Send</button>
+  </div>
+</div>
+
+    <script src="{{ url_for('static', filename='chatbot.js') }}"></script>
+
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-gray-400 py-6 px-6">
+        <div class="max-w-6xl mx-auto text-center">
+            <p class="text-sm font-light">&copy; 2025 HealthCare+ Clinic. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+    </script>
+</body>
+</html>

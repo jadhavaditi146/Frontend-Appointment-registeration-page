@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HealthCare Clinic - Book Your Appointment Online</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * { font-family: 'Inter', sans-serif; }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .fade-in { animation: fadeIn 1s ease-out; }
+        .glass {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+    </style>
+</head>
+<body class="bg-white text-gray-800">
+    <!-- Header -->
+    <nav class="fixed w-full bg-white/90 backdrop-blur-md z-50 border-b border-gray-100">
+        <div class="max-w-6xl mx-auto px-6 py-4">
+            <div class="flex justify-between items-center">
+                <div class="text-xl font-semibold text-teal-600">HealthCare+</div>
+                
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex items-center gap-8">
+                    <a href="/" class="text-gray-700 hover:text-teal-600 transition font-medium text-sm">Home</a>
+                    <a href="/doctors" class="text-gray-700 hover:text-teal-600 transition font-medium text-sm">Doctors</a>
+                    <a href="/book" class="text-gray-700 hover:text-teal-600 transition font-medium text-sm">Book Appointment</a>
+                    <a href="/my-appointments" class="text-gray-700 hover:text-teal-600 transition font-medium text-sm">My Appointments</a>
+                    <a href="/about" class="text-gray-700 hover:text-teal-600 transition font-medium text-sm">About</a>
+                    <a href="/contact" class="text-gray-700 hover:text-teal-600 transition font-medium text-sm">Contact</a>
+
+                </div>
+
+                <a href="/book" class="hidden md:block bg-teal-600 text-white px-6 py-2.5 rounded-lg text-sm font-medium hover:bg-teal-700 transition">
+    Book Now
+</a>
+
+                <!-- Mobile Menu Button -->
+                <button id="mobileMenuBtn" class="md:hidden text-gray-700">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+            </div>
+
+            <!-- Mobile Menu -->
+            <div id="mobileMenu" class="hidden md:hidden pt-4 pb-2">
+                <div class="flex flex-col gap-3">
+                    <a href="/" class="text-gray-700 hover:text-teal-600 transition font-medium text-sm py-2">Home</a>
+                    <a href="/doctors" class="text-gray-700 hover:text-teal-600 transition font-medium text-sm py-2">Doctors</a>
+                    <a href="/book" class="text-gray-700 hover:text-teal-600 transition font-medium text-sm py-2">Book Appointment</a>
+                    <a href="/my-appointments" class="text-gray-700 hover:text-teal-600 transition font-medium text-sm py-2">My Appointments</a>
+                    <a href="/about" class="text-gray-700 hover:text-teal-600 transition font-medium text-sm py-2">About</a>
+                    <a href="/contacts" class="text-gray-700 hover:text-teal-600 transition font-medium text-sm py-2">Contact</a>
+                    
+                    <a href="/book" class="hidden md:block bg-teal-600 text-white px-6 py-2.5 rounded-lg text-sm font-medium hover:bg-teal-700 transition">
+    Book Now
+</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <script>
+        // Mobile menu toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+    </script>
+
+    <!-- Hero Section -->
+    <section class="pt-32 pb-20 px-6">
+        <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-16 items-center">
+            <div class="fade-in">
+                <h1 class="text-5xl font-bold text-gray-900 mb-6 leading-tight">
+                    Quality Healthcare<br/>
+                    <span class="text-teal-600">Made Simple</span>
+                </h1>
+                <p class="text-lg text-gray-600 mb-8 leading-relaxed font-light">
+                    Schedule appointments with experienced medical professionals. Compassionate care, modern facilities, trusted by thousands.
+                </p>
+                <div class="flex gap-4">
+                    <a href="/book" class="bg-teal-600 text-white px-8 py-3.5 rounded-lg font-medium hover:bg-teal-700 transition shadow-sm">
+                        Schedule Appointment
+                    </a>
+                    <a  href="/contact" class="border border-gray-300 text-gray-700 px-8 py-3.5 rounded-lg font-medium hover:border-teal-600 hover:text-teal-600 transition">
+                        Emergency Care
+                    </a>
+                </div>
+            </div>
+            <div class="relative">
+                <img src="https://images.unsplash.com/photo-1631217868264-e5b90bb7e133?w=800&q=80" 
+                     alt="Modern clinic interior" 
+                     class="rounded-2xl shadow-xl w-full h-96 object-cover">
+                <div class="absolute -bottom-6 -left-6 glass rounded-xl p-5 shadow-lg">
+                    <div class="flex items-center gap-4">
+                        <div class="bg-teal-50 p-3 rounded-lg">
+                            <svg class="w-5 h-5 text-teal-600" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"/>
+                            </svg>
+                        </div>
+                        <div>
+                            <div class="text-2xl font-semibold text-gray-900">500+</div>
+                            <div class="text-sm text-gray-600 font-light">Happy Patients</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Doctors Section -->
+    <section class="py-20 px-6 bg-gray-50">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-semibold text-gray-900 mb-3">Meet Our Specialists</h2>
+                <p class="text-gray-600 font-light">Expert doctors committed to your health and wellbeing</p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-md transition">
+                    <div class="relative h-72 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=400&q=80" 
+                             alt="Dr. Rajesh Kumar" 
+                             class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-lg font-semibold text-gray-900 mb-1">Dr. Rajesh Kumar</h3>
+                        <p class="text-teal-600 text-sm font-medium mb-2">General Physician</p>
+                        <p class="text-gray-600 text-sm font-light">15 years of experience in family medicine and preventive care</p>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-md transition">
+                    <div class="relative h-72 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1594824476967-48c8b964273f?w=400&q=80" 
+                             alt="Dr. Priya Sharma" 
+                             class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-lg font-semibold text-gray-900 mb-1">Dr. Priya Sharma</h3>
+                        <p class="text-teal-600 text-sm font-medium mb-2">Pediatrician</p>
+                        <p class="text-gray-600 text-sm font-light">Specialized in child healthcare with compassionate approach</p>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-md transition">
+                    <div class="relative h-72 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1622253692010-333f2da6031d?w=400&q=80" 
+                             alt="Dr. Amit Patel" 
+                             class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-lg font-semibold text-gray-900 mb-1">Dr. Amit Patel</h3>
+                        <p class="text-teal-600 text-sm font-medium mb-2">Cardiologist</p>
+                        <p class="text-gray-600 text-sm font-light">Expert in cardiovascular health and disease management</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services -->
+    <section class="py-20 px-6">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-semibold text-gray-900 mb-3">Our Services</h2>
+                <p class="text-gray-600 font-light">Comprehensive medical care for you and your family</p>
+            </div>
+            
+            <div class="grid md:grid-cols-4 gap-6">
+                <div class="bg-white border border-gray-200 p-6 rounded-xl hover:border-teal-600 hover:shadow-sm transition">
+                    <div class="w-10 h-10 bg-teal-100 rounded-lg flex items-center justify-center mb-4">
+                        <svg class="w-5 h-5 text-teal-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                        </svg>
+                    </div>
+                    <h3 class="font-semibold text-gray-900 mb-2">Health Checkup</h3>
+                    <p class="text-sm text-gray-600 font-light">Complete physical examination and diagnostics</p>
+                </div>
+
+                <div class="bg-white border border-gray-200 p-6 rounded-xl hover:border-teal-600 hover:shadow-sm transition">
+                    <div class="w-10 h-10 bg-teal-100 rounded-lg flex items-center justify-center mb-4">
+                        <svg class="w-5 h-5 text-teal-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/>
+                        </svg>
+                    </div>
+                    <h3 class="font-semibold text-gray-900 mb-2">Vaccinations</h3>
+                    <p class="text-sm text-gray-600 font-light">Immunization services for all age groups</p>
+                </div>
+
+                <div class="bg-white border border-gray-200 p-6 rounded-xl hover:border-teal-600 hover:shadow-sm transition">
+                    <div class="w-10 h-10 bg-teal-100 rounded-lg flex items-center justify-center mb-4">
+                        <svg class="w-5 h-5 text-teal-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/>
+                        </svg>
+                    </div>
+                    <h3 class="font-semibold text-gray-900 mb-2">Lab Tests</h3>
+                    <p class="text-sm text-gray-600 font-light">Advanced laboratory testing and analysis</p>
+                </div>
+
+                <div class="bg-white border border-gray-200 p-6 rounded-xl hover:border-teal-600 hover:shadow-sm transition">
+                    <div class="w-10 h-10 bg-red-100 rounded-lg flex items-center justify-center mb-4">
+                        <svg class="w-5 h-5 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/>
+                        </svg>
+                    </div>
+                    <h3 class="font-semibold text-gray-900 mb-2">Emergency Care</h3>
+                    <p class="text-sm text-gray-600 font-light">24/7 urgent medical care services</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="py-16 px-6 bg-teal-600">
+        <div class="max-w-6xl mx-auto">
+            <div class="grid md:grid-cols-3 gap-12 text-white text-center">
+                <div>
+                    <div class="flex justify-center mb-3">
+                        <div class="bg-white/20 p-3 rounded-lg backdrop-blur-sm">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <h3 class="font-semibold mb-2">Emergency Hotline</h3>
+                    <p class="text-xl font-semibold mb-1">+91 98765 43210</p>
+                    <p class="text-teal-100 text-sm font-light">Available 24/7</p>
+                </div>
+
+                <div>
+                    <div class="flex justify-center mb-3">
+                        <div class="bg-white/20 p-3 rounded-lg backdrop-blur-sm">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <h3 class="font-semibold mb-2">Clinic Location</h3>
+                    <p class="text-teal-100 font-light">123 Medical Center Road</p>
+                    <p class="text-teal-100 font-light">Pimpri, Maharashtra 411018</p>
+                </div>
+
+                <div>
+                    <div class="flex justify-center mb-3">
+                        <div class="bg-white/20 p-3 rounded-lg backdrop-blur-sm">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <h3 class="font-semibold mb-2">Working Hours</h3>
+                    <p class="text-teal-100 font-light">Monday - Saturday: 9 AM - 8 PM</p>
+                    <p class="text-teal-100 font-light">Sunday: Emergency Only</p>
+                </div>
+            </div>
+        </div>
+    </section>
+<!-- Chatbot Button -->
+<div id="chatbot-button" class="fixed bottom-5 right-5 bg-teal-600 text-white px-5 py-3 rounded-full shadow-lg cursor-pointer hover:bg-teal-700 transition z-50">
+  Ask AI
+</div>
+
+<!-- Chatbot Popup -->
+<div id="chatbot-popup" class="hidden fixed bottom-20 right-5 w-80 md:w-96 max-h-[80vh] bg-white shadow-xl rounded-xl flex flex-col overflow-hidden border border-gray-200 z-50">
+  
+  <!-- Header -->
+  <div id="chatbot-header" class="bg-teal-600 text-white px-4 py-3 flex justify-between items-center">
+    <span class="font-semibold text-lg">Ask Diet AI</span>
+    <button id="close-btn" class="text-white text-xl font-bold hover:text-gray-200">×</button>
+  </div>
+  
+  <!-- Messages -->
+  <div id="chatbot-messages" class="flex-1 p-4 overflow-y-auto space-y-2">
+    <!-- Messages appear here -->
+  </div>
+  
+  <!-- Input Area -->
+  <div class="flex border-t border-gray-200 p-3 bg-gray-50">
+    <input id="chatbot-input" type="text" placeholder="Type your question..." class="flex-1 px-3 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-teal-500">
+    <button id="send-btn" class="ml-2 bg-teal-600 text-white px-4 py-2 rounded-lg hover:bg-teal-700 transition">Send</button>
+  </div>
+</div>
+
+    <script src="{{ url_for('static', filename='chatbot.js') }}"></script>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-gray-400 py-6 px-6">
+        <div class="max-w-6xl mx-auto text-center">
+            <p class="text-sm font-light">&copy; 2025 HealthCare+ Clinic. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
