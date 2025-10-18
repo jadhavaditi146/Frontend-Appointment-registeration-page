@@ -255,6 +255,34 @@
             </div>
         </div>
     </section>
+    <!-- Chatbot Button -->
+<div id="chatbot-button" class="fixed bottom-5 right-5 bg-teal-600 text-white px-5 py-3 rounded-full shadow-lg cursor-pointer hover:bg-teal-700 transition z-50">
+  Ask AI
+</div>
+
+<!-- Chatbot Popup -->
+<div id="chatbot-popup" class="hidden fixed bottom-20 right-5 w-80 md:w-96 max-h-[80vh] bg-white shadow-xl rounded-xl flex flex-col overflow-hidden border border-gray-200 z-50">
+  
+  <!-- Header -->
+  <div id="chatbot-header" class="bg-teal-600 text-white px-4 py-3 flex justify-between items-center">
+    <span class="font-semibold text-lg">Ask Diet AI</span>
+    <button id="close-btn" class="text-white text-xl font-bold hover:text-gray-200">×</button>
+  </div>
+  
+  <!-- Messages -->
+  <div id="chatbot-messages" class="flex-1 p-4 overflow-y-auto space-y-2">
+    <!-- Messages appear here -->
+  </div>
+  
+  <!-- Input Area -->
+  <div class="flex border-t border-gray-200 p-3 bg-gray-50">
+    <input id="chatbot-input" type="text" placeholder="Type your question..." class="flex-1 px-3 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-teal-500">
+    <button id="send-btn" class="ml-2 bg-teal-600 text-white px-4 py-2 rounded-lg hover:bg-teal-700 transition">Send</button>
+  </div>
+</div>
+
+    <script src="{{ url_for('static', filename='chatbot.js') }}"></script>
+
 
     <!-- Footer -->
     <footer class="bg-gray-900 text-gray-400 py-6 px-6">
